@@ -184,6 +184,12 @@ Migrate the database
 rails db:create
 ```
 
+Seed the database
+
+```
+rails db:seed
+```
+
 Start server:
 
 ```
