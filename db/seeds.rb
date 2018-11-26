@@ -8,3 +8,4 @@
 
 user = User.create()
 user.tasks.create(content: '1st task', due: DateTime.now)
+user.tasks.create(content: '2nd task', due: DateTime.now)
