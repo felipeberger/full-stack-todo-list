@@ -181,7 +181,7 @@ rails db:create
 Migrate the database
 
 ```
-rails db:create
+rails db:migrate
 ```
 
 Seed the database
