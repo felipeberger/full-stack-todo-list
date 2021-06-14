@@ -30,3 +30,14 @@ $.ajaxSetup({
   
     $.ajax(request);
   };
+
+  var deleteTask = function (taskId, successCB, errorCB) {
+    var request = {
+      type: 'DELETE',
+      url: 'api/tasks/' + taskId + '?api_key=1',
+      
+      success: successCB,
+      error: errorCB
+    }
+    $.ajax(request);
+  }
