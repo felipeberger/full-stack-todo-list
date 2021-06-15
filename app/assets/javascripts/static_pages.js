@@ -3,8 +3,8 @@ $(document).on("turbolinks:load", function () {
       indexTasks(function (response) {
         var htmlString = response.tasks.map(function(task) {
           return "<div class='col-12 mb-3 p-2 border rounded task clearfix' data-id='" + task.id + "'> \
-          <input type='checkbox' class='mark-complete mr-2'>" + task.content + "\
-          <button class='delete rounded float-right " + task.completed + "' data-id='" + task.id + "'>Remove</button></div>";
+          <input type='checkbox' class='mark-complete mr-2'><span style=''>" + task.content + "\
+          </span><button class='delete rounded float-right " + task.completed + "' data-id='" + task.id + "'>Remove</button></div>";
         });
   
         $("#tasks").html(htmlString);
@@ -18,8 +18,8 @@ $(document).on("turbolinks:load", function () {
         indexTasks(function (response) {
           var htmlString = response.tasks.map(function(task) {
             return "<div class='col-12 mb-3 p-2 border rounded task clearfix' data-id='" + task.id + "'> \
-            <input type='checkbox' class='mark-complete mr-2'>" + task.content + "\
-            <button class='delete rounded float-right " + task.completed + "' data-id='" + task.id + "'>Remove</button></div>";
+            <input type='checkbox' class='mark-complete mr-2'><span style=''>" + task.content + "\
+            </span><button class='delete rounded float-right " + task.completed + "' data-id='" + task.id + "'>Remove</button></div>";
           });
     
           $("#tasks").html(htmlString);
@@ -63,8 +63,8 @@ $(document).on('click', '.delete', function(e) {
     indexTasks(function (response) {
       var htmlString = response.tasks.map(function(task) {
         return "<div class='col-12 mb-3 p-2 border rounded task clearfix' data-id='" + task.id + "'> \
-        <input type='checkbox' class='mark-complete mr-2'>" + task.content + "\
-        <button class='delete rounded float-right " + task.completed + "' data-id='" + task.id + "'>Remove</button></div>";
+        <input type='checkbox' class='mark-complete mr-2'><span style=''>" + task.content + "\
+        </span><button class='delete rounded float-right " + task.completed + "' data-id='" + task.id + "'>Remove</button></div>";
       });
 
       $("#tasks").html(htmlString);
@@ -72,4 +72,15 @@ $(document).on('click', '.delete', function(e) {
   });
 });
 
+$(document).on('click', '.mark-complete', function () {
+  var checkComplete = $(this).next().attr('style').length;
+  var selection = $(this).next()
+  console.log(checkComplete)
 
+  if (checkComplete == 0) {
+    selection.attr('style', 'text-decoration: line-through')
+  } else {
+    selection.attr('style', '')
+  };
+
+});
