@@ -41,3 +41,25 @@ $.ajaxSetup({
     }
     $.ajax(request);
   }
+
+  var markActive = function (taskId, successCB, errorCB) {
+    var request = {
+      type: 'PUT',
+      url: 'api/tasks/'+ taskId +'/mark_active?api_key=1',
+      
+      success: successCB,
+      error: errorCB
+    }
+    $.ajax(request);
+  }
+
+  var markInactive = function (taskId, successCB, errorCB) {
+    var request = {
+      type: 'PUT',
+      url: 'api/tasks/'+ taskId +'/mark_complete?api_key=1',
+      
+      success: successCB,
+      error: errorCB
+    }
+    $.ajax(request);
+  }
