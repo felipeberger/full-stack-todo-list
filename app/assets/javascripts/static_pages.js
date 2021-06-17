@@ -8,7 +8,7 @@ $(document).on("turbolinks:load", function () {
     $('#create-task').on('submit', function (e) {
       e.preventDefault();
       var content = $('#new-task-content').val();
-      postTask(content, () => {
+      postTask(content, function () {
         indexTasks(function (response) {
           injectTask(response)
         });
