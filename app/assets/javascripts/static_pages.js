@@ -58,7 +58,7 @@ $(document).on('click', '.mark-complete', function (e) {
 
 
   } else {
-    selection.attr('style', '')
+    selectSpan.attr('style', '')
     divSelect.removeClass('true')
     divSelect.addClass('false')
     document.querySelector(queryConstructor).querySelector('input').outerHTML = "<input type='checkbox' class='mark-complete mr-2' ></input>"
@@ -76,19 +76,41 @@ $(document).on('click','.visibility-button', function (e) {
 
   switch (buttonId) {
     case 'all-tasks':
-      // something
-
+      allTasks.each(function(){
+        $(this).removeClass('d-none')
+      })
+      $(this).addClass('btn-primary')
+      $('#active-only').removeClass('btn-primary')
+      $('#completed-only').removeClass('btn-primary')
       break;
+
     case 'active-only':
-      // something
-      // allTasks.each(function(){
-      //   $(this).attr('class', '')
-      // })
 
-
+      allTasks.each(function(){
+        if($(this).attr('class').includes('true')) {
+          $(this).addClass('d-none');
+        } else {
+          $(this).removeClass('d-none');
+        }
+      })
+      $(this).addClass('btn-primary')
+      $('#all-tasks').removeClass('btn-primary')
+      $('#completed-only').removeClass('btn-primary')
       break;
+
     case 'completed-only':
-      // something
+
+      allTasks.each(function(){
+        
+        if($(this).attr('class').includes('false')) {
+          $(this).addClass('d-none');
+        } else {
+          $(this).removeClass('d-none');
+        }
+      })
+      $(this).addClass('btn-primary')
+      $('#all-tasks').removeClass('btn-primary')
+      $('#active-only').removeClass('btn-primary')
   }
 
 })
